@@ -1,10 +1,10 @@
 <template>
-    <div
-    v-if="tempData"
+    <div v-if="tempData"
         style="background-color: ghostwhite; width: 300px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
         <img style="width: 300px; height: 200px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src="tempData[0].image">
         {{ tempData }}
     </div>
+    <button @click="buyCar(tempData.id)">Купить</button>
 </template>
   
   
@@ -13,11 +13,16 @@
 import axios from "axios"
 import { ref } from "vue"
 import { useRoute } from "vue-router"
+import { useCart } from "../store/car"
+
+const carStore = useCart()
+
+function buyCar(id) {
+carStore.addProduct(id)
+}
 
 const router = useRoute()
-
 const cardsInfo = ref([])
-
 const tempData = ref(null)
 axios.get(`http://localhost:3000/products/${router.params.id}`).then((res) => {
     tempData.value = [{

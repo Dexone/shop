@@ -4,13 +4,14 @@
 
   </router-view>
   <footer>
-    123
+{{ carStore.carLength}}
   </footer>
 </div>
 </template>
 
 <script setup>
-
+import { useCart } from "./store/car"
+const carStore = useCart()
 </script>
 
 
