@@ -7,7 +7,10 @@
       "owners": "1",
       "year": "2021",
       "probeg": "25200",
+      "power": "194",
+      "kuzov": "Седан",
       "transmission": "АКПП",
+      "engine": "Бензин",
       "color": "Белый",
       "price": 3370000,
       "image": "https://i.rolf-probeg.ru/img/bluefish/16388933/large/9.jpg"
@@ -19,7 +22,10 @@
       "owners": "1",
       "year": "2019",
       "probeg": "49 779",
+      "power": "150",
+      "kuzov": "Седан",
       "transmission": "РКПП",
+      "engine": "Бензин",
       "color": "Белый",
       "price": 2234000,
       "image": "https://i.rolf-probeg.ru/img/bluefish/16241772/large/16.jpg"
@@ -31,7 +37,10 @@
       "owners": "2",
       "year": "2020",
       "probeg": "50482",
+      "power": "249",
+      "kuzov": "Внедорожник",
       "transmission": "АКПП",
+      "engine": "Дизель",
       "color": "Черный",
       "price": 5099000,
       "image": "https://i.rolf-probeg.ru/img/bluefish/16439305/large/21.jpg"
