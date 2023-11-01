@@ -2,23 +2,39 @@
   "products": [
     {
       "id": 1,
-      "title": "Kia K5",
-      "description": "K5, 2021 г.в., 25 200 км, Седан, АКПП, Бензин, 194 лс",
+      "brand": "Kia",
+      "model": "K5",
+      "owners": "1",
+      "year": "2021",
+      "probeg": "25200",
+      "transmission": "АКПП",
+      "color": "Белый",
       "price": 3370000,
-      "image": "https://i.rolf-probeg.ru/img/bluefish/16388933/large/9.jpg",
-      "available": 10,
-      "rating": 5,
-      "discount": true
+      "image": "https://i.rolf-probeg.ru/img/bluefish/16388933/large/9.jpg"
     },
     {
       "id": 2,
-      "title": "Chevrolet Captiva",
-      "description": "Captiva, 2012 г.в., 105 168 км, Внедорожник 5 дв., АКПП, Бензин, 167 лс",
-      "price": 1504000,
-      "image": "https://i.rolf-probeg.ru/img/bluefish/16419867/large/6.jpg",
-      "available": 20,
-      "rating": 4,
-      "discount": true
+      "brand": "Volkswagen",
+      "model": "Passat",
+      "owners": "1",
+      "year": "2019",
+      "probeg": "49 779",
+      "transmission": "РКПП",
+      "color": "Белый",
+      "price": 2234000,
+      "image": "https://i.rolf-probeg.ru/img/bluefish/16241772/large/16.jpg"
+    },
+    {
+      "id": 3,
+      "brand": "Kia",
+      "model": "Mohave",
+      "owners": "2",
+      "year": "2020",
+      "probeg": "50482",
+      "transmission": "АКПП",
+      "color": "Черный",
+      "price": 5099000,
+      "image": "https://i.rolf-probeg.ru/img/bluefish/16439305/large/21.jpg"
     }
   ]
 }
