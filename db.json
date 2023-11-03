@@ -44,6 +44,51 @@
       "color": "Черный",
       "price": 5099000,
       "image": "https://i.rolf-probeg.ru/img/bluefish/16439305/large/21.jpg"
+    },
+    {
+      "id": 4,
+      "brand": "Mazda",
+      "model": "6",
+      "owners": "2",
+      "year": "2020",
+      "probeg": "51 190",
+      "power": "150",
+      "kuzov": "Седан",
+      "transmission": "АКПП",
+      "engine": "Бензин",
+      "color": "Серый",
+      "price": 2600000,
+      "image": "https://i.rolf-probeg.ru/img/bluefish/15658133/large/6.jpg"
+    },
+    {
+      "id": 5,
+      "brand": "Haval",
+      "model": "Jolion",
+      "owners": "2",
+      "year": "2021",
+      "probeg": "16 000",
+      "power": "143",
+      "kuzov": "Внедорожник",
+      "transmission": "Робот",
+      "engine": "Бензин",
+      "color": "Красный",
+      "price": 1997000,
+      "image": "https://i.rolf-probeg.ru/img/bluefish/16400674/large/18.jpg"
+    },
+    {
+      "id": 6,
+      "brand": "Toyota",
+      "model": "Camry",
+      "owners": "2",
+      "year": "2010",
+      "probeg": "188 235",
+      "power": "167",
+      "kuzov": "Седан",
+      "transmission": "АКПП",
+      "engine": "Бензин",
+      "color": "Серый",
+      "price": 1447000,
+      "image": "https://i.rolf-probeg.ru/img/bluefish/16451946/large/18.jpg"
     }
   ]
 }
