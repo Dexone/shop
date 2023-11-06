@@ -18,7 +18,7 @@ import { useCart } from "../store/car"
 const carStore = useCart()
 
 function buyCar(id) {
-carStore.addProduct(id)
+    carStore.addProduct(id)
 }
 
 const router = useRoute()

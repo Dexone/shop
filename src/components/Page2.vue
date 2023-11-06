@@ -35,7 +35,7 @@ axios.get("http://localhost:3000/products").then((res) => {
             image: res.data[index].image,
         }
     })
-    cardsInfo.value = tempData.slice(0,8)
+    cardsInfo.value = tempData.slice(8, 16)
 }
 )
 </script>
