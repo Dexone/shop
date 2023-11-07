@@ -13,10 +13,10 @@
 
 <script setup>
 import axios from "axios"
-import { ref } from "vue"
+import { ref, provide, inject } from "vue"
+const cardsInfo = inject("cardsInfo")
 
 
-const cardsInfo = ref([])
 axios.get("http://localhost:3000/products").then((res) => {
     const tempData = res.data.map((item, index) => {
         return {
@@ -35,7 +35,7 @@ axios.get("http://localhost:3000/products").then((res) => {
             image: res.data[index].image,
         }
     })
-    cardsInfo.value = tempData.slice(0,8)
+    cardsInfo.value = tempData
 }
 )
 </script>

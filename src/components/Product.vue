@@ -24,7 +24,7 @@ function buyCar(id) {
 const router = useRoute()
 const cardsInfo = ref([])
 const tempData = ref(null)
-axios.get(`http://localhost:3000/products/${router.params.id}`).then((res) => {
+axios.get(`http://localhost:3000/products?brand=${router.params.id}`).then((res) => {
     tempData.value = [{
         id: res.data.id,
         brand: res.data.brand,
