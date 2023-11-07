@@ -3,12 +3,10 @@
         style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
         <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
         <RouterLink :to="{ name: 'product', params: { id: card.id } }">{{ card.brand }}{{ card.model }}</RouterLink><br>
-        {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }}, {{
-            card.power }}л/с<br>
+        {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }},
+        {{ card.power }}л/с<br>
         {{ card.price }}₽
     </div>
-
-
 </template>
 
 <script setup>
@@ -17,17 +15,8 @@ import { ref, watch, onMounted, inject } from "vue"
 
 const filter = inject("filter") // массив выбранных авто
 let favourite = [] //строка поиска выбранных авто
-
-
 const filterInfo = ref([]) // отрисовка карточек в фильтре
 const counter = inject("counter")
-
-
-
-
-
-
-
 function drawCards() {
     favourite.length = 0
     let i = 0
@@ -37,7 +26,6 @@ function drawCards() {
     }
     let fav = favourite.join('')
     console.log(fav)
-
     axios.get(`http://localhost:3000/products?${fav}`).then((res) => {
         const tempData = res.data.map((item, index) => {
             return {
@@ -57,8 +45,7 @@ function drawCards() {
             }
         })
         filterInfo.value = tempData
-    }
-    )
+    })
 }
 onMounted(drawCards)
 watch(counter, () => {
