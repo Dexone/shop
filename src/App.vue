@@ -8,19 +8,40 @@
     </div>
 
     <div
-      style="width: 520px; background-color: white; padding: 10px; border-radius: 10px; height: 50px; display: inline-block;">
-      <input type="checkbox" value="АКПП"  v-model="filterKuzov" >
+      style="width: 520px; background-color: white; padding: 10px; border-radius: 10px; height: 50px; margin-top: 5px;">
+      <input type="checkbox" value="Седан" v-model="filterKuzov">
+      <label>Седан</label>
+      <input type="checkbox" value="Хэтчбек" v-model="filterKuzov">
+      <label>Хэтчбек</label>
+      <input type="checkbox" value="Универсал" v-model="filterKuzov">
+      <label>Универсал</label>
+      <input type="checkbox" value="Внедорожник" v-model="filterKuzov">
+      <label>Внедорожник</label>
+    </div>
+
+
+    <div
+      style="width: 520px; background-color: white; padding: 10px; border-radius: 10px; height: 50px; margin-top: 5px;">
+      <input type="checkbox" value="АКПП" v-model="filterTransmission">
       <label>АКПП</label>
-      <input type="checkbox" value="МКПП" v-model="filterKuzov">
+      <input type="checkbox" value="МКПП" v-model="filterTransmission">
       <label>МКПП</label>
-      <input type="checkbox" value="Робот" v-model="filterKuzov">
+      <input type="checkbox" value="Робот" v-model="filterTransmission">
       <label>Робот</label>
-      <input type="checkbox" value="Вариатор" v-model="filterKuzov">
+      <input type="checkbox" value="Вариатор" v-model="filterTransmission">
       <label>Вариатор</label>
     </div>
 
-    <div v-for="filKuzov, index in filterKuzov">
+    <div v-for="filKuzov, index in filterKuzov" style="display: inline-block;">
+      <button style="width: auto; height: 30px; color: gray;" @click="filterKuzov.splice(index, 1)" class="button">{{
+        filKuzov }}
+        ✖</button>
+    </div>
 
+    <div v-for="filTransmission, index in filterTransmission" style="display: inline-block;">
+      <button style="width: auto; height: 30px; color: gray;" @click="filterTransmission.splice(index, 1)"
+        class="button">{{ filTransmission }}
+        ✖</button>
     </div>
 
     <div v-for="fil, index in filter" style="display: inline-block;">
@@ -40,7 +61,6 @@
     </div>
   </div>
 
-  <button @click="console.log(filterKuzov)">test</button>
   <div>
     <router-view>
     </router-view>
@@ -49,7 +69,6 @@
 
     </footer>
   </div>
-
 </template>
 
 <script setup>
@@ -77,6 +96,9 @@ provide("filter", filter)
 
 const filterKuzov = ref([]) //список выбранных кузовов
 provide("filterKuzov", filterKuzov)
+
+const filterTransmission = ref([]) //список выбранных кпп
+provide("filterTransmission", filterTransmission)
 
 const counter = ref(1) //watch
 provide("counter", counter)

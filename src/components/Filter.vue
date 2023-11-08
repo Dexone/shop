@@ -21,6 +21,9 @@ let favourite = [] //строка поиска выбранных авто
 const filterKuzov = inject("filterKuzov") //массив выбранных кузовов
 let favouriteKuzov = [] //строка поиска выбранных кузовов
 
+const filterTransmission = inject("filterTransmission") //массив выбранных кузовов
+let favouriteTransmission = [] //строка поиска выбранных кузовов
+
 const filterInfo = ref([]) // отрисовка карточек в фильтре
 const counter = inject("counter")
 
@@ -33,17 +36,24 @@ function drawCards() {
     }
     let fav = favourite.join('')
 
-favouriteKuzov.length=0
-let a = 0
-while(a<filterKuzov.value.length){
-    favouriteKuzov.push("&kuzov="+filterKuzov.value[a])
-    a++
-}
-let favKuzov = favouriteKuzov.join('')
+    favouriteKuzov.length = 0
+    let a = 0
+    while (a < filterKuzov.value.length) {
+        favouriteKuzov.push("&kuzov=" + filterKuzov.value[a])
+        a++
+    }
+    let favKuzov = favouriteKuzov.join('')
 
+    favouriteTransmission.length=0
+    let b=0
+    while (b<filterTransmission.value.length){
+        favouriteTransmission.push("&transmission=" + filterTransmission.value[b])
+        b++
+    }
+    let favTransmission = favouriteTransmission.join('')
+    console.log(favTransmission)
 
-
-    axios.get(`http://localhost:3000/products?${fav}${favKuzov}`).then((res) => {
+    axios.get(`http://localhost:3000/products?${fav}${favKuzov}${favTransmission}`).then((res) => {
         const tempData = res.data.map((item, index) => {
             return {
                 id: res.data[index].id,
