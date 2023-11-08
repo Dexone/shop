@@ -19,7 +19,6 @@
       <label>Внедорожник</label>
     </div>
 
-
     <div
       style="width: 520px; background-color: white; padding: 10px; border-radius: 10px; height: 50px; margin-top: 5px;">
       <input type="checkbox" value="АКПП" v-model="filterTransmission">
@@ -33,13 +32,13 @@
     </div>
 
     <div v-for="filKuzov, index in filterKuzov" style="display: inline-block;">
-      <button style="width: auto; height: 30px; color: gray;" @click="filterKuzov.splice(index, 1)" class="button">{{
+      <button style="width: auto; height: 30px; color: red;" @click="filterKuzov.splice(index, 1)" class="button">{{
         filKuzov }}
         ✖</button>
     </div>
 
     <div v-for="filTransmission, index in filterTransmission" style="display: inline-block;">
-      <button style="width: auto; height: 30px; color: gray;" @click="filterTransmission.splice(index, 1)"
+      <button style="width: auto; height: 30px; color: red;" @click="filterTransmission.splice(index, 1)"
         class="button">{{ filTransmission }}
         ✖</button>
     </div>
@@ -48,7 +47,7 @@
       <button style="width: auto; height: 30px; color: red;" @click="filter.splice(index, 1)" class="button">{{ fil }}
         ✖</button>
     </div>
-
+    <button @click="console.log(basket)">console</button>
     <div>
       <button style="width: auto; height: 30px;border: 0; border-radius: 5px; margin-right: 5px; margin-top: 5px;"
         @click="filter.length = 0, filterKuzov.length = 0">
@@ -56,17 +55,20 @@
       </button>
       <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
         <RouterLink :to="{ name: 'filter' }" @click="counter++">Показать ({{
-          filter.length }}) </RouterLink>
+          filter.length + filterKuzov.length + filterTransmission.length }}) </RouterLink>
       </button>
     </div>
   </div>
 
+  <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
+    <RouterLink :to="{ name: 'basket' }" @click="counter++">Корзина ({{
+      basket.length }}) </RouterLink>
+  </button>
   <div>
     <router-view>
     </router-view>
     <footer>
       {{ carStore.carLength }}
-
     </footer>
   </div>
 </template>
@@ -75,9 +77,10 @@
 import { useCart } from "./store/car"
 import { provide, ref } from 'vue'
 
+const basket = ref([])//корзина
+provide("basket", basket)
 const cardsInfo = ref([]) //общий список авто
 provide("cardsInfo", cardsInfo)
-
 let brands = ref()
 function pre() {
   let BrandList = []
@@ -90,19 +93,14 @@ function pre() {
   brands.value = uniqueArr
 }
 setTimeout(pre, 100)
-
 const filter = ref([]) //список выбранных марок
 provide("filter", filter)
-
 const filterKuzov = ref([]) //список выбранных кузовов
 provide("filterKuzov", filterKuzov)
-
 const filterTransmission = ref([]) //список выбранных кпп
 provide("filterTransmission", filterTransmission)
-
 const counter = ref(1) //watch
 provide("counter", counter)
-
 const carStore = useCart()
 </script>
 

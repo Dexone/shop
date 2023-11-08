@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import Product from "../components/Product.vue"
 import Home from "../components/Home.vue"
 import Filter from "../components/Filter.vue"
+import Basket from "../components/Basket.vue"
 
 const routes = [
     {
@@ -13,6 +14,9 @@ const routes = [
     },
     {
         path: "/filter", component: Filter, name: "filter"
+    },
+    {
+        path: "/basket", component: Basket, name: "basket"
     }
 ]
 export default createRouter(

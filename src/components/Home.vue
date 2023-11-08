@@ -5,7 +5,8 @@
         <RouterLink :to="{ name: 'product', params: { id: card.id } }">{{ card.brand }}{{ card.model }}</RouterLink><br>
         {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }}, {{
             card.power }}л/с<br>
-        {{ card.price }}₽
+        {{ card.price }}₽<br>
+        <button @click="basket.push(card.id), console.log(basket), counter++">Купить</button>
     </div>
 </template>
 
@@ -16,6 +17,8 @@ import axios from "axios"
 import { ref, provide, inject } from "vue"
 const cardsInfo = inject("cardsInfo")
 
+const counter = inject("counter")
+const basket = inject("basket")
 
 axios.get("http://localhost:3000/products").then((res) => {
     const tempData = res.data.map((item, index) => {
@@ -37,16 +40,6 @@ axios.get("http://localhost:3000/products").then((res) => {
 
     })
     cardsInfo.value = tempData
-
-    // let BrandList = []
-    // let i = 0
-    // while (i < tempData.length) {
-    //     BrandList.push(tempData[i].brand)
-    //     i++
-    // }
-    // const uniqueArr = [...new Set(BrandList)];
-    // let BrandListJoin = uniqueArr.join(' ')
-    // console.log(BrandListJoin)
 }
 
 )

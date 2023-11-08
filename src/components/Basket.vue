@@ -6,7 +6,6 @@
         {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }},
         {{ card.power }}л/с<br>
         {{ card.price }}₽
-        <button @click="basket.push(card.id), counter++">Купить</button>
     </div>
 </template>
 
@@ -14,39 +13,20 @@
 import axios from "axios"
 import { ref, watch, onMounted, inject } from "vue"
 
-const basket = inject("basket")
-const filter = inject("filter") // массив выбранных марок
-let favourite = [] //строка поиска выбранных авто
-const filterKuzov = inject("filterKuzov") //массив выбранных кузовов
-let favouriteKuzov = [] //строка поиска выбранных кузовов
-const filterTransmission = inject("filterTransmission") //массив выбранных трансмиссий
-let favouriteTransmission = [] //строка поиска выбранных трансмиссий
-const filterInfo = ref([]) // отрисовка карточек в фильтре
 const counter = inject("counter")
+const filterInfo = ref([])
+const basket = inject("basket") // массив ID корзины
+let basketList = []
 function drawCards() {
-    favourite.length = 0
+    basketList.length = 0
     let i = 0
-    while (i < filter.value.length) {
-        favourite.push("&brand=" + filter.value[i])
+    while (i < basket.value.length) {
+        basketList.push("&id=" + basket.value[i])
         i++
     }
-    let fav = favourite.join('')
-    favouriteKuzov.length = 0
-    let a = 0
-    while (a < filterKuzov.value.length) {
-        favouriteKuzov.push("&kuzov=" + filterKuzov.value[a])
-        a++
-    }
-    let favKuzov = favouriteKuzov.join('')
-    favouriteTransmission.length = 0
-    let b = 0
-    while (b < filterTransmission.value.length) {
-        favouriteTransmission.push("&transmission=" + filterTransmission.value[b])
-        b++
-    }
-    let favTransmission = favouriteTransmission.join('')
-    console.log(favTransmission)
-    axios.get(`http://localhost:3000/products?${fav}${favKuzov}${favTransmission}`).then((res) => {
+    let bask = basketList.join('')
+
+    axios.get(`http://localhost:3000/products?${bask}`).then((res) => {
         const tempData = res.data.map((item, index) => {
             return {
                 id: res.data[index].id,
