@@ -34,8 +34,23 @@ axios.get("http://localhost:3000/products").then((res) => {
             price: res.data[index].price,
             image: res.data[index].image,
         }
+
     })
     cardsInfo.value = tempData
+
+    // let BrandList = []
+    // let i = 0
+    // while (i < tempData.length) {
+    //     BrandList.push(tempData[i].brand)
+    //     i++
+    // }
+    // const uniqueArr = [...new Set(BrandList)];
+    // let BrandListJoin = uniqueArr.join(' ')
+    // console.log(BrandListJoin)
 }
+
 )
+
+
+
 </script>

@@ -13,10 +13,17 @@
 import axios from "axios"
 import { ref, watch, onMounted, inject } from "vue"
 
-const filter = inject("filter") // массив выбранных авто
+
+
+const filter = inject("filter") // массив выбранных марок
 let favourite = [] //строка поиска выбранных авто
+
+const filterKuzov = inject("filterKuzov") //массив выбранных кузовов
+let favouriteKuzov = [] //строка поиска выбранных кузовов
+
 const filterInfo = ref([]) // отрисовка карточек в фильтре
 const counter = inject("counter")
+
 function drawCards() {
     favourite.length = 0
     let i = 0
@@ -25,8 +32,18 @@ function drawCards() {
         i++
     }
     let fav = favourite.join('')
-    console.log(fav)
-    axios.get(`http://localhost:3000/products?${fav}`).then((res) => {
+
+favouriteKuzov.length=0
+let a = 0
+while(a<filterKuzov.value.length){
+    favouriteKuzov.push("&kuzov="+filterKuzov.value[a])
+    a++
+}
+let favKuzov = favouriteKuzov.join('')
+
+
+
+    axios.get(`http://localhost:3000/products?${fav}${favKuzov}`).then((res) => {
         const tempData = res.data.map((item, index) => {
             return {
                 id: res.data[index].id,

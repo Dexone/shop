@@ -1,10 +1,9 @@
 <template>
   <div style="background-color: gainsboro; padding: 10px; border-radius: 10px;">
 
-    <div style=" background-color: white; padding: 10px; border-radius: 10px;">
-      <div v-for="card, index in cardsInfo"
-        style="display: inline-block;">
-        <div @click="filter.push(card.brand)">&nbsp;{{ card.brand }}</div>
+    <div style="width: 520px; background-color: white; padding: 10px; border-radius: 10px;">
+      <div v-for="card, index in brands" style="display: inline-block;">
+        <div @click="filter.push(card)">&nbsp;{{ card }}</div>
       </div>
     </div>
     <div v-for="fil, index in filter" style="display: inline-block;">
@@ -12,8 +11,14 @@
         ✖</button>
     </div>
     <div>
-      <RouterLink :to="{ name: 'home' }">Сбросить</RouterLink>
-      <RouterLink :to="{ name: 'filter' }" @click="counter++">Поиск</RouterLink>
+      <button style="width: auto; height: 30px;border: 0; border-radius: 5px; margin-right: 5px; margin-top: 5px;"
+        @click="filter.length = 0, filterKuzov.length=0">
+        <RouterLink :to="{ name: 'home' }">Сбросить ✖</RouterLink>
+      </button>
+      <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
+        <RouterLink :to="{ name: 'filter' }" @click="counter++">Показать ({{
+          filter.length }}) </RouterLink>
+      </button>
     </div>
   </div>
   <div>
@@ -32,10 +37,29 @@ import { provide, ref } from 'vue'
 
 const cardsInfo = ref([]) //общий список авто
 provide("cardsInfo", cardsInfo)
-const filter = ref([]) //список выбранных авто
+
+let brands = ref()
+function pre() {
+  let BrandList = []
+  let i = 0
+  while (i < cardsInfo.value.length) {
+    BrandList.push(cardsInfo.value[i].brand)
+    i++
+  }
+  const uniqueArr = [...new Set(BrandList)];
+  brands.value = uniqueArr
+}
+setTimeout(pre, 100)
+
+const filter = ref([]) //список выбранных марок
 provide("filter", filter)
+
+const filterKuzov = ref([]) //список выбранных кузовов
+provide("filterKuzov", filterKuzov)
+
 const counter = ref(1) //watch
 provide("counter", counter)
+
 const carStore = useCart()
 </script>
 
