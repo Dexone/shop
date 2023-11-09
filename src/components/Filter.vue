@@ -1,7 +1,7 @@
 <template>
     <div v-for="card in filterInfo"
-        style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
+        style="background-color: ghostwhite;  width: 280px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
+        <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
         <RouterLink :to="{ name: 'product' }">{{ card.brand }}{{ card.model }} </RouterLink><br>
         {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }},
         {{ card.power }}л/с<br>
@@ -45,7 +45,6 @@ function drawCards() {
         b++
     }
     let favTransmission = favouriteTransmission.join('')
-    console.log(favTransmission)
     axios.get(`http://localhost:3000/products?${fav}${favKuzov}${favTransmission}`).then((res) => {
         const tempData = res.data.map((item, index) => {
             return {

@@ -1,7 +1,7 @@
 <template>
     <div v-for="bask in basketInfo"
-        style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=bask.image>
+        style="background-color: ghostwhite; width: 280px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
+        <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=bask.image>
         <RouterLink :to="{ name: 'product' }">{{ bask.brand }}{{ bask.model }} </RouterLink><br>
         {{ bask.model }}, {{ bask.year }}г.в., {{ bask.probeg }} км, {{ bask.transmission }}, {{ bask.engine }},
         {{ bask.power }}л/с<br>
@@ -13,10 +13,9 @@
 import axios from "axios"
 import { ref, watch, onMounted, inject } from "vue"
 
-const counter = inject("counter")
-const basketInfo = ref([])
+const basketInfo = ref([]) //v-for
 const basket = inject("basket") // массив ID корзины
-let basketList = []
+let basketList = [] //массив &id=
 function drawCards() {
     basketList.length = 0
     let i = 0
@@ -48,7 +47,5 @@ function drawCards() {
     })
 }
 onMounted(drawCards)
-watch(counter, () => {
-    drawCards()
-})
+
 </script>

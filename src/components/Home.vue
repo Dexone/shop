@@ -1,12 +1,12 @@
 <template>
-    <div v-for="card in cardsInfo"
-        style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
-        <RouterLink :to="{ name: 'product' }" @click="product.length=0, product.push(card.id), console.log(product)">{{ card.brand }}{{ card.model }}</RouterLink><br>
-        {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }}, {{
-            card.power }}л/с<br>
-        {{ card.price }}₽<br>
-        <button @click="basket.push(card.id), console.log(basket), counter++">Купить</button>
+    <div v-for="home in homeInfo"
+        style="background-color: ghostwhite; width: 280px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
+        <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=home.image>
+        <RouterLink :to="{ name: 'product' }" @click="product.length=0, product.push(home.id), console.log(product)">{{ home.brand }}{{ home.model }}</RouterLink><br>
+        {{ home.model }}, {{ home.year }}г.в., {{ home.probeg }} км, {{ home.transmission }}, {{ home.engine }}, {{
+            home.power }}л/с<br>
+        {{ home.price }}₽<br>
+        <button @click="basket.push(home.id)">Купить</button>
     </div>
 </template>
 
@@ -15,9 +15,9 @@
 <script setup>
 import axios from "axios"
 import { ref, provide, inject } from "vue"
-const cardsInfo = inject("cardsInfo")
+const homeInfo = inject("homeInfo")
 
-const counter = inject("counter")
+
 const basket = inject("basket")
 const product = inject("product")
 axios.get("http://localhost:3000/products").then((res) => {
@@ -39,7 +39,7 @@ axios.get("http://localhost:3000/products").then((res) => {
         }
 
     })
-    cardsInfo.value = homeData
+    homeInfo.value = homeData
 }
 
 )

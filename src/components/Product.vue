@@ -1,8 +1,44 @@
 <template>
-    <div v-if="productData"
-        style="background-color: ghostwhite; width: 300px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 300px; height: 200px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src="productData[0].image">
-        {{ productData[0] }}
+    <div v-if="productData" style="margin: 10px;">
+
+
+
+
+
+        <table style="float: left; margin-right: 10px;">
+            <h1>Основные характеристики</h1>
+            <tr>
+                <td>Владельцы:</td>
+                <td>{{ productData[0].owners }}</td>
+            </tr>
+            <tr>
+                <td>Год выпуска:</td>
+                <td>{{ productData[0].year }}</td>
+            </tr>
+            <tr>
+                <td>Пробег:</td>
+                <td>{{ productData[0].probeg }}</td>
+            </tr>
+            <tr>
+                <td>Двигатель:</td>
+                <td> {{ productData[0].power }}л.с. / {{ productData[0].engine }}</td>
+            </tr>
+            <tr>
+                <td>Кузов:</td>
+                <td>{{ productData[0].kuzov }}</td>
+            </tr>
+            <tr>
+                <td>Коробка:</td>
+                <td>{{ productData[0].transmission }}</td>
+            </tr>
+            <tr>
+                <td>Цвет:</td>
+                <td>{{ productData[0].color }}</td>
+            </tr>
+        </table>
+        <img style="width: 558px; height: 400px;" :src="productData[0].image">
+        <button style="width: 150px; height: 50px; margin-left: 70px;" @click="basket.push(productData[0].id), counter++">Купить</button>
+
     </div>
 </template>
 
@@ -11,7 +47,7 @@ import axios from "axios"
 import { ref, inject, onMounted, watch } from "vue"
 import { useRoute } from "vue-router"
 import { useCart } from "../store/car"
-
+const basket = inject("basket")
 const product = inject("product")
 const productData = ref()
 function productUpdate() {
