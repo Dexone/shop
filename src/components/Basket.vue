@@ -1,4 +1,5 @@
 <template>
+        Сумма товаров:<br>
     <div v-for="bask in basketInfo"
         style="background-color: ghostwhite; width: 280px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
         <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=bask.image>
@@ -7,6 +8,7 @@
         {{ bask.power }}л/с<br>
         {{ bask.price }}₽
     </div>
+
 </template>
 
 <script setup>

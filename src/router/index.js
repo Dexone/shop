@@ -4,6 +4,7 @@ import Product from "../components/Product.vue"
 import Home from "../components/Home.vue"
 import Filter from "../components/Filter.vue"
 import Basket from "../components/Basket.vue"
+import Test from "../components/Test.vue"
 
 const routes = [
     {
@@ -17,6 +18,9 @@ const routes = [
     },
     {
         path: "/basket", component: Basket, name: "basket"
+    },
+    {
+        path: "/test", component: Test, name: "test"
     }
 ]
 export default createRouter(

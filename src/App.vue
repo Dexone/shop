@@ -81,6 +81,7 @@
 <script setup>
 import { useCart } from "./store/car"
 import { provide, ref } from 'vue'
+import axios from 'axios'
 
 
 const product = ref([]) //id выбранного авто при нажатии на название в product
@@ -116,6 +117,38 @@ provide("filterTransmission", filterTransmission)
 const counter = ref(1) //счетчик для отслеживания выполнения функции
 provide("counter", counter)
 
+
+
+
+
+
+
+
+const mainInfo = ref()
+provide("mainInfo", mainInfo)
+axios.get("http://localhost:3000/products").then((res) => {
+    const mainData = res.data.map((item, index) => {
+        return {
+            id: res.data[index].id,
+            brand: res.data[index].brand,
+            model: res.data[index].model,
+            owners: res.data[index].owners,
+            year: res.data[index].year,
+            probeg: res.data[index].probeg,
+            power: res.data[index].power,
+            kuzov: res.data[index].kuzov,
+            transmission: res.data[index].transmission,
+            engine: res.data[index].engine,
+            color: res.data[index].color,
+            price: res.data[index].price,
+            image: res.data[index].image,
+        }
+
+    })
+    mainInfo.value = mainData
+}
+
+)
 </script>
 
 
