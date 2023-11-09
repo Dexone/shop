@@ -77,6 +77,9 @@
 import { useCart } from "./store/car"
 import { provide, ref } from 'vue'
 
+
+const product = ref([])
+provide("product", product)
 const basket = ref([])//корзина
 provide("basket", basket)
 const cardsInfo = ref([]) //общий список авто

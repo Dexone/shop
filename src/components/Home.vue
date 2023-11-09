@@ -2,7 +2,7 @@
     <div v-for="card in cardsInfo"
         style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
         <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
-        <RouterLink :to="{ name: 'product', params: { id: card.id } }">{{ card.brand }}{{ card.model }}</RouterLink><br>
+        <RouterLink :to="{ name: 'product' }" @click="product.length=0, product.push(card.id), console.log(product)">{{ card.brand }}{{ card.model }}</RouterLink><br>
         {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }}, {{
             card.power }}л/с<br>
         {{ card.price }}₽<br>
@@ -19,9 +19,9 @@ const cardsInfo = inject("cardsInfo")
 
 const counter = inject("counter")
 const basket = inject("basket")
-
+const product = inject("product")
 axios.get("http://localhost:3000/products").then((res) => {
-    const tempData = res.data.map((item, index) => {
+    const homeData = res.data.map((item, index) => {
         return {
             id: res.data[index].id,
             brand: res.data[index].brand,
@@ -39,7 +39,7 @@ axios.get("http://localhost:3000/products").then((res) => {
         }
 
     })
-    cardsInfo.value = tempData
+    cardsInfo.value = homeData
 }
 
 )

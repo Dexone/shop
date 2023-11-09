@@ -1,11 +1,11 @@
 <template>
-    <div v-for="card in filterInfo"
+    <div v-for="bask in basketInfo"
         style="background-color: ghostwhite; width: 450px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=card.image>
-        <RouterLink :to="{ name: 'product', params: { id: card.id } }">{{ card.brand }}{{ card.model }}</RouterLink><br>
-        {{ card.model }}, {{ card.year }}г.в., {{ card.probeg }} км, {{ card.transmission }}, {{ card.engine }},
-        {{ card.power }}л/с<br>
-        {{ card.price }}₽
+        <img style="width: 450px; height: 300px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=bask.image>
+        <RouterLink :to="{ name: 'product' }">{{ bask.brand }}{{ bask.model }} </RouterLink><br>
+        {{ bask.model }}, {{ bask.year }}г.в., {{ bask.probeg }} км, {{ bask.transmission }}, {{ bask.engine }},
+        {{ bask.power }}л/с<br>
+        {{ bask.price }}₽
     </div>
 </template>
 
@@ -14,7 +14,7 @@ import axios from "axios"
 import { ref, watch, onMounted, inject } from "vue"
 
 const counter = inject("counter")
-const filterInfo = ref([])
+const basketInfo = ref([])
 const basket = inject("basket") // массив ID корзины
 let basketList = []
 function drawCards() {
@@ -27,7 +27,7 @@ function drawCards() {
     let bask = basketList.join('')
 
     axios.get(`http://localhost:3000/products?${bask}`).then((res) => {
-        const tempData = res.data.map((item, index) => {
+        const basketData = res.data.map((item, index) => {
             return {
                 id: res.data[index].id,
                 brand: res.data[index].brand,
@@ -44,7 +44,7 @@ function drawCards() {
                 image: res.data[index].image,
             }
         })
-        filterInfo.value = tempData
+        basketInfo.value = basketData
     })
 }
 onMounted(drawCards)
