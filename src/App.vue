@@ -124,6 +124,8 @@ provide("counter", counter)
 
 
 
+
+
 const mainInfo = ref()
 provide("mainInfo", mainInfo)
 axios.get("http://localhost:3000/products").then((res) => {
