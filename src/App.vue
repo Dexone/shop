@@ -1,11 +1,18 @@
 <template>
-  <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px; float: right;">
-    <RouterLink :to="{ name: 'recycle' }">Корзина </RouterLink>
-  </button>
 
-  <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px; float: right;">
-    <RouterLink :to="{ name: 'filters' }">Фильтры </RouterLink>
-  </button>
+  <header style="background-color: #223750; width: 1920px; height: 50px; padding: 10px;">
+    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
+      <RouterLink :to="{ name: 'home' }">Все автомобили </RouterLink>
+    </button>
+    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
+      <RouterLink :to="{ name: 'recycle' }">Корзина </RouterLink>
+    </button>
+
+    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
+      <RouterLink :to="{ name: 'filters' }">Фильтры </RouterLink>
+    </button>
+  </header>
+
 
   <div style="width: 900px; margin-left: auto; margin-right: auto;">
     <router-view>

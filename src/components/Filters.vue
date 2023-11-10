@@ -1,8 +1,4 @@
 <template>
-    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
-        <RouterLink :to="{ name: 'home' }">Показать всё </RouterLink>
-    </button>
-
     <div
         style="background-color: #efefef; border-radius: 10px; width: 900px; height: 170px; font-size: 17px; color: #6c6a6a;">
 
