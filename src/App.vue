@@ -1,5 +1,4 @@
 <template>
-
   <header style="background-color: #223750; width: 1920px; height: 50px; padding: 10px;">
     <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
       <RouterLink :to="{ name: 'home' }">Все автомобили </RouterLink>
@@ -13,7 +12,6 @@
     </button>
   </header>
 
-
   <div style="width: 900px; margin-left: auto; margin-right: auto;">
     <router-view>
     </router-view>
@@ -21,18 +19,14 @@
 </template>
 
 <script setup>
-import { useCart } from "./store/car"
 import { provide, ref } from 'vue'
 import axios from 'axios'
-
 
 const productInfo = ref([]) //product
 provide("productInfo", productInfo)
 
 const recycleInfo = ref([])   //корзина
 provide("recycleInfo", recycleInfo)
-
-
 
 const mainInfo = ref()
 provide("mainInfo", mainInfo)
@@ -53,12 +47,9 @@ axios.get("http://localhost:3000/products").then((res) => {
       price: res.data[index].price,
       image: res.data[index].image,
     }
-
   })
   mainInfo.value = mainData
-}
-
-)
+})
 </script>
 
 

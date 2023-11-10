@@ -8,7 +8,9 @@
         {{ main.model }}, {{ main.year }}г.в., {{ main.probeg }} км, {{ main.transmission }}, {{ main.engine }}, {{
             main.power }}л/с<br>
         {{ main.price }}₽<br>
-        <button style ="width: 90px; height: 30px; background-color: red; border: 0; color: white; border-radius: 5px; margin-left: 80px" @click="recycleInfo.push(main)">Купить</button>
+        <button
+            style="width: 90px; height: 30px; background-color: red; border: 0; color: white; border-radius: 5px; margin-left: 80px"
+            @click="recycleInfo.push(main)">Купить</button>
     </div>
 </template>
 
@@ -18,8 +20,4 @@ import { inject } from "vue"
 const recycleInfo = inject("recycleInfo")
 const productInfo = inject("productInfo")
 const mainInfo = inject("mainInfo")
-
-
-
-
 </script>

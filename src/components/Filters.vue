@@ -2,8 +2,6 @@
     <div
         style="background-color: #efefef; border-radius: 10px; width: 900px; height: 170px; font-size: 17px; color: #6c6a6a;">
 
-
-
         <div>
             <div
                 style="width: 370px; background-color: white; border-radius: 10px; height:60px; float: left; padding: 7px; margin: 7px;">
@@ -12,7 +10,6 @@
                 </div>
             </div>
         </div>
-
 
         <div
             style="width: 270px; background-color: white; border-radius: 10px; height:60px; float: left; padding: 7px; margin: 7px;">
@@ -39,10 +36,7 @@
             </div>
         </div>
 
-
     </div>
-
-
 
     <div v-for="filter in filtersInfo"
         style="background-color: ghostwhite; width: 280px; height: 320px; display: inline-block; margin: 10px; border-radius: 1.5ch">
@@ -112,7 +106,6 @@ function axiosget() {
         })
         filtersInfo.value = filtersData
     })
-
 }
 watch(window.value, () => {
     axiosget()

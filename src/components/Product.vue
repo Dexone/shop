@@ -40,6 +40,7 @@
 
 <script setup>
 import { inject } from "vue"
+
 const recycleInfo = inject("recycleInfo") //добавление в корзину
 const productInfo = inject("productInfo")
 </script>
