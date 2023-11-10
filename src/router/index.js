@@ -2,9 +2,8 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Product from "../components/Product.vue"
 import Home from "../components/Home.vue"
-import Filter from "../components/Filter.vue"
-import Basket from "../components/Basket.vue"
-import Test from "../components/Test.vue"
+import Recycle from "../components/Recycle.vue"
+import Filters from "../components/Filters.vue"
 
 const routes = [
     {
@@ -14,13 +13,10 @@ const routes = [
         path: "/product/", component: Product, name: "product"
     },
     {
-        path: "/filter", component: Filter, name: "filter"
+        path: "/recycle", component: Recycle, name: "recycle"
     },
     {
-        path: "/basket", component: Basket, name: "basket"
-    },
-    {
-        path: "/test", component: Test, name: "test"
+        path: "/filters", component: Filters, name: "filters"
     }
 ]
 export default createRouter(
