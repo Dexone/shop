@@ -4,6 +4,7 @@ import Product from "../components/Product.vue"
 import Home from "../components/Home.vue"
 import Recycle from "../components/Recycle.vue"
 import Filters from "../components/Filters.vue"
+import Uslugi from "../components/Uslugi.vue"
 
 const routes = [
     {
@@ -17,6 +18,9 @@ const routes = [
     },
     {
         path: "/filters", component: Filters, name: "filters"
+    },
+    {
+        path: "/404", component: Uslugi, name: "404"
     }
 ]
 export default createRouter(

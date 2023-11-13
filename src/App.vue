@@ -1,15 +1,20 @@
 <template>
-  <header style="background-color: #223750; width: 1920px; height: 50px; padding: 10px;">
-    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
-      <RouterLink :to="{ name: 'home' }">Все автомобили </RouterLink>
-    </button>
-    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
-      <RouterLink :to="{ name: 'recycle' }">Корзина </RouterLink>
-    </button>
+  <header style="background: linear-gradient(90deg, #162235, #233a54); width: 1920px; height: 50px; padding: 10px;">
+    <a style="width: auto; height: 30px; margin-left: 500px;">
+      <RouterLink style="color: white;" :to="{ name: 'home' }">Все автомобили </RouterLink>
+    </a>
 
-    <button style="width: auto; height: 30px; background-color: white; border: 0; border-radius: 5px;">
-      <RouterLink :to="{ name: 'filters' }">Фильтры </RouterLink>
-    </button>
+    <a style="width: auto; height: 30px;margin-left: 20px;">
+      <RouterLink style="color: white;" :to="{ name: 'filters' }">Фильтры </RouterLink>
+    </a>
+
+    <a style="width: auto; height: 30px;margin-left: 20px;">
+      <RouterLink style="color: white;" :to="{ name: '404' }">Услуги </RouterLink>
+    </a>
+
+    <a v-bind="summInfo" style="width: auto; height: 30px; margin-left: 510px;">
+        <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ summInfo }})</RouterLink>
+    </a>
   </header>
 
   <div style="width: 900px; margin-left: auto; margin-right: auto;">
@@ -27,6 +32,9 @@ provide("productInfo", productInfo)
 
 const recycleInfo = ref([])   //корзина
 provide("recycleInfo", recycleInfo)
+
+const summInfo = ref(0)   //сумма товаров
+provide("summInfo", summInfo)
 
 const mainInfo = ref()
 provide("mainInfo", mainInfo)

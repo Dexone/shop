@@ -1,6 +1,6 @@
 <template>
     <div
-        style="background-color: #efefef; border-radius: 10px; width: 900px; height: 170px; font-size: 17px; color: #6c6a6a;">
+        style="background-color: #efefef; border-radius: 10px; width: 880px; height: 170px; font-size: 17px; color: #6c6a6a; margin-top: 10px; margin-left: 10px; ">
 
         <div>
             <div
@@ -39,18 +39,23 @@
     </div>
 
     <div v-for="filter in filtersInfo"
-        style="background-color: ghostwhite; width: 280px; height: 320px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=filter.image>
-        <RouterLink :to="{ name: 'product' }"
-            @click="productInfo.length = 0, productInfo.push(filter), console.log(productInfo)">{{
-                filter.brand }}{{ filter.model }}</RouterLink><br>
-        {{ filter.model }}, {{ filter.year }}г.в., {{ filter.probeg }} км, {{ filter.transmission }}, {{ filter.engine }},
-        {{
-            filter.power }}л/с<br>
-        {{ filter.price }}₽<br>
+        style="width: 280px; height: 400px; display: inline-block; margin: 10px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8;">
+        <img style="width: 340px; height: 190px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=filter.image>
+        <div style="margin: 20px; color: #a0a09f;">
+            <b style="font-size: 18px;">
+                <RouterLink style="color: black;" :to="{ name: 'product' }"
+                    @click="productInfo.length = 0, productInfo.push(filter)">{{
+                        filter.brand }} {{ filter.model }}</RouterLink><br>
+            </b>
+            {{ filter.model }}, {{ filter.year }}г.в., {{ filter.probeg }} км, {{ filter.transmission }}, {{ filter.engine
+            }},
+            {{
+                filter.power }}л/с<br>
+            <b style="font-size: 24px; color: black;"> {{ filter.price }} ₽</b><br>
+        </div>
         <button
-            style="width: 90px; height: 30px; background-color: red; border: 0; color: white; border-radius: 5px; margin-left: 80px"
-            @click="recycleInfo.push(filter)">Купить</button>
+            style="width: 230px; height: 40px; background-color: red; border: 0; color: white; border-radius: 10px; margin-left: 30px; font-size: 18px;"
+            @click="recycleInfo.push(filter), summInfo = +summInfo  + +filter.price">Купить</button>
     </div>
 </template>
 
@@ -83,6 +88,7 @@ const window = ref([]) //окно марок
 let search = [] //&brand=&transmissions=&kuzov=
 const productInfo = inject("productInfo") //добавление в продукт
 const recycleInfo = inject("recycleInfo") //добавление в корзину
+const summInfo = inject("summInfo") //сумма
 
 const filtersInfo = ref([])
 function axiosget() {

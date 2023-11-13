@@ -1,7 +1,7 @@
 <template>
     <div v-for="product in productInfo" style="margin: 10px;">
         <table style="float: left; margin-right: 10px;">
-            <h1>Основные характеристики</h1>
+            <b>Основные характеристики</b>
             <tr>
                 <td>Владельцы:</td>
                 <td>{{ product.owners }}</td>
@@ -31,7 +31,7 @@
                 <td>{{ product.color }}</td>
             </tr>
         </table>
-        <img style="width: 558px; height: 400px;" :src="product.image">
+        <img style="width: 545px; height: 400px;" :src="product.image">
         <button
             style="width: 90px; height: 30px; background-color: red; border: 0; color: white; border-radius: 5px; margin-left: 80px"
             @click="recycleInfo.push(product)">Купить</button>
