@@ -13,7 +13,7 @@
     </a>
 
     <a v-bind="summInfo" style="width: auto; height: 30px; margin-left: 510px;">
-        <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ summInfo }})</RouterLink>
+      <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ summInfo }})</RouterLink>
     </a>
   </header>
 
@@ -38,22 +38,25 @@ provide("summInfo", summInfo)
 
 const mainInfo = ref()
 provide("mainInfo", mainInfo)
-axios.get("http://localhost:3000/products").then((res) => {
+axios.get("/product").then((res) => {
+  console.log(res)
   const mainData = res.data.map((item, index) => {
+
     return {
-      id: res.data[index].id,
-      brand: res.data[index].brand,
-      model: res.data[index].model,
-      owners: res.data[index].owners,
-      year: res.data[index].year,
-      probeg: res.data[index].probeg,
-      power: res.data[index].power,
-      kuzov: res.data[index].kuzov,
-      transmission: res.data[index].transmission,
-      engine: res.data[index].engine,
-      color: res.data[index].color,
-      price: res.data[index].price,
-      image: res.data[index].image,
+      // id: res.data[index].id,
+      // brand: res.data[index].brand,
+      // model: res.data[index].model,
+      // owners: res.data[index].owners,
+      // year: res.data[index].year,
+      // probeg: res.data[index].probeg,
+      // power: res.data[index].power,
+      // kuzov: res.data[index].kuzov,
+      // transmission: res.data[index].transmission,
+      // engine: res.data[index].engine,
+      // color: res.data[index].color,
+      // price: res.data[index].price,
+      // image: res.data[index].image,
+
     }
   })
   mainInfo.value = mainData
