@@ -34,7 +34,7 @@
         <img style="width: 545px; height: 400px;" :src="product.image">
         <button
             style="width: 90px; height: 30px; background-color: red; border: 0; color: white; border-radius: 5px; margin-left: 80px"
-            @click="recycleInfo.push(product)">Купить</button>
+            @click="recycleInfo.push(product), summInfo = +summInfo + +product.price">Купить</button>
     </div>
 </template>
 
@@ -43,4 +43,5 @@ import { inject } from "vue"
 
 const recycleInfo = inject("recycleInfo") //добавление в корзину
 const productInfo = inject("productInfo")
+const summInfo = inject("summInfo")
 </script>

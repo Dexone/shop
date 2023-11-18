@@ -38,31 +38,24 @@ provide("summInfo", summInfo)
 
 const mainInfo = ref()
 provide("mainInfo", mainInfo)
-axios.get("/product").then((res) => {
-  console.log(res)
+axios.get("http://62.109.22.57:3000/products").then((res) => {
   const mainData = res.data.map((item, index) => {
-
     return {
-      // id: res.data[index].id,
-      // brand: res.data[index].brand,
-      // model: res.data[index].model,
-      // owners: res.data[index].owners,
-      // year: res.data[index].year,
-      // probeg: res.data[index].probeg,
-      // power: res.data[index].power,
-      // kuzov: res.data[index].kuzov,
-      // transmission: res.data[index].transmission,
-      // engine: res.data[index].engine,
-      // color: res.data[index].color,
-      // price: res.data[index].price,
-      // image: res.data[index].image,
-
+      id: res.data[index].id,
+      brand: res.data[index].brand,
+      model: res.data[index].model,
+      owners: res.data[index].owners,
+      year: res.data[index].year,
+      probeg: res.data[index].probeg,
+      power: res.data[index].power,
+      kuzov: res.data[index].kuzov,
+      transmission: res.data[index].transmission,
+      engine: res.data[index].engine,
+      color: res.data[index].color,
+      price: res.data[index].price,
+      image: res.data[index].image,
     }
   })
   mainInfo.value = mainData
 })
 </script>
-
-
-
-

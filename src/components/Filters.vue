@@ -92,7 +92,7 @@ const summInfo = inject("summInfo") //сумма
 
 const filtersInfo = ref([])
 function axiosget() {
-    axios.get(`http://localhost:3000/products?${search.join('')}`).then((res) => {
+    axios.get(`http://62.109.22.57:3000/products?${search.join('')}`).then((res) => {
         const filtersData = res.data.map((item, index) => {
             return {
                 id: res.data[index].id,

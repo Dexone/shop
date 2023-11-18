@@ -5,7 +5,7 @@ import Home from "../components/Home.vue"
 import Recycle from "../components/Recycle.vue"
 import Filters from "../components/Filters.vue"
 import Uslugi from "../components/Uslugi.vue"
-import Admin from "../components/Admin.vue"
+
 
 const routes = [
     {
@@ -22,9 +22,6 @@ const routes = [
     },
     {
         path: "/404", component: Uslugi, name: "404"
-    },
-    {
-        path: "/admin", component: Admin, name: "admin"
     }
 ]
 export default createRouter(
