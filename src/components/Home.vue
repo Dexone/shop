@@ -1,8 +1,8 @@
 <template>
     <div v-for="main, index in mainInfo"
-        style="width: 980px; height: 400px; display: inline-block; margin: 10px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8;">
-        <img style="width: 340px; height: 190px; float: left; margin-right: 20px; border-radius: 1.5ch" :src=main.image>
-        <div style="margin: 20px; color: #a0a09f;">
+        style="width: 980px; height: 180px; display: inline-block; margin: 10px; border: 1px  solid; border-color: #f8f8f8;">
+        <img style="width: 210px; height: 150px; float: left; margin-right: 20px; border-radius: 1.5ch" :src=main.image>
+        <div style="margin-left: 20px; color: #a0a09f;">
             <b style="font-size: 18px;">
                 <RouterLink style="color: black;" :to="{ name: 'product' }"
                     @click="productInfo.length = 0, productInfo.push(main), console.log(productInfo)">{{
@@ -25,4 +25,18 @@ const recycleInfo = inject("recycleInfo")
 const summInfo = inject("summInfo")
 const productInfo = inject("productInfo")
 const mainInfo = inject("mainInfo")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
