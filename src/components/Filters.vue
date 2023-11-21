@@ -39,8 +39,8 @@
     </div>
 
     <div v-for="filter in filtersInfo"
-        style="width: 280px; height: 400px; display: inline-block; margin: 10px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8;">
-        <img style="width: 340px; height: 190px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=filter.image>
+        style="width: 980px; height: 400px; display: inline-block; margin: 10px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8;">
+        <img style="width: 340px; height: 190px; float: left; margin-right: 20px; border-radius: 1.5ch" :src=filter.image>
         <div style="margin: 20px; color: #a0a09f;">
             <b style="font-size: 18px;">
                 <RouterLink style="color: black;" :to="{ name: 'product' }"

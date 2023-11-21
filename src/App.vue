@@ -1,5 +1,5 @@
 <template>
-  <header style="background: linear-gradient(90deg, #162235, #233a54); width: 1920px; height: 50px; padding: 10px;">
+  <header style="background-color: #db3727; width: 1920px; height: 40px; padding: 7px;">
     <a style="width: auto; height: 30px; margin-left: 500px;">
       <RouterLink style="color: white;" :to="{ name: 'home' }">Все автомобили </RouterLink>
     </a>
