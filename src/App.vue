@@ -1,23 +1,23 @@
 <template>
-  <header style="background-color: #db3727; width: 1920px; height: 40px; padding: 7px;">
-    <a style="width: auto; height: 30px; margin-left: 500px;">
-      <RouterLink style="color: white;" :to="{ name: 'home' }">Все автомобили </RouterLink>
+  <header style="background-color: #db3727; max-width: 3000px; height: 40px; padding: 7px;">
+    <a style="width: auto;">
+      <RouterLink style="color: white;" :to="{ name: 'home' }">Все авто </RouterLink>
     </a>
 
-    <a style="width: auto; height: 30px;margin-left: 20px;">
+    <a style="width: auto; height: 30px;margin-left: 15px;">
       <RouterLink style="color: white;" :to="{ name: 'filters' }">Фильтры </RouterLink>
     </a>
 
-    <a style="width: auto; height: 30px;margin-left: 20px;">
+    <a style="width: auto; height: 30px;margin-left: 15px;">
       <RouterLink style="color: white;" :to="{ name: '404' }">Услуги </RouterLink>
     </a>
 
-    <a v-bind="summInfo" style="width: auto; height: 30px; margin-left: 510px;">
-      <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ summInfo }})</RouterLink>
+    <a v-bind="summInfo" style="width: auto; height: 30px; margin-left: 15px;">
+      <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ recycleInfo.length }})</RouterLink>
     </a>
   </header>
 
-  <div style="width: 900px; margin-left: auto; margin-right: auto;">
+  <div style="max-width: 600px; margin-left: auto; margin-right: auto;">
     <router-view>
     </router-view>
   </div>
