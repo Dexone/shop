@@ -1,30 +1,26 @@
 <template>
     <div v-for="main, index in mainInfo"
-        style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  padding-top: 10px;">
-        <img style="width: 210px; height: 150px; float: left; border-radius: 1.5ch; padding-right: 10px;" :src=main.image>
-        <b style="font-size: 18px;">
-            <RouterLink style="color: black; padding-right: 10px;" :to="{ name: 'product' }"
-                @click="productInfo.length = 0, productInfo.push(main)">{{
-                    main.brand }} {{ main.model }}</RouterLink>
-        </b>
-        <b style="font-size: 18px;"> {{ main.price }} ₽</b>
-        <span style="padding: 10px;">{{ main.year }}</span>
-        {{ main.probeg }}
-        <br>
-        <span style="padding-right: 30px;">{{ main.engine }}/{{
-            main.power }}</span> {{ main.color }}
-        <br>
-        <span style="padding-right: 70px;">{{ main.transmission }}</span> Владельцев: {{ main.owners }}
-        <br>
-        {{ main.kuzov }}
-        <br>
+        style="width: 300px; display: inline-block;margin-right: 30px; margin-top: 30px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+
+        <img style="width: 300px; height: 190px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=main.image>
+
+
+
+        <RouterLink style="color: black; font-size: 20px;margin: 10px;" :to="{ name: 'product' }"
+            @click="productInfo.length = 0, productInfo.push(main), console.log(productInfo)"><b>{{
+                main.brand }} {{ main.model }}</b></RouterLink><br>
+
+
+        <div style=" color: #a0a09f; padding: 10px;">
+            {{ main.model }}, {{ main.year }}г.в., {{ main.probeg }} км, {{ main.transmission }}, {{ main.engine }}, {{
+                main.power }}л/с</div>
+
+        <div style="padding: 10px;font-size: 26px; color: black;"><b> {{ main.price }} ₽</b></div>
+
+
         <button
-            style="width: 150px; height: 30px; background-color: #36b555; border: 0; color: white; border-radius: 5px; font-size: 18px; margin-top: 10px;"
+            style="width: 230px; height: 40px; background-color: #256bd2; border: 0; color: white; border-radius: 10px; margin: 10px 30px 10px 30px; font-size: 18px;"
             @click="recycleInfo.push(main), summInfo = +summInfo + +main.price">Купить</button>
-        <p>
-        <div style="background-color: #e5e5e5; height: 1px; max-width: 3000px; margin-top: 50px;">
-        </div>
-        </p>
     </div>
 </template>
 
@@ -35,18 +31,4 @@ const recycleInfo = inject("recycleInfo")
 const summInfo = inject("summInfo")
 const productInfo = inject("productInfo")
 const mainInfo = inject("mainInfo")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>

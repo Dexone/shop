@@ -1,23 +1,20 @@
-<template >
-  <header style="background-color: #db3727; max-width: 3000px; height: 40px; padding: 7px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
-    <a style="width: auto;">
-      <RouterLink style="color: white;" :to="{ name: 'home' }">Все авто </RouterLink>
-    </a>
+<template>
+  <header
+    style="background: linear-gradient(90deg, #162235, #233a54); max-width: 10000px; height: 40px; padding: 7px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <div style="max-width: 1330px; margin-left: auto; margin-right: auto; margin-top: 8px; font-size: 16px;">
 
-    <a style="width: auto; height: 30px;margin-left: 15px;">
-      <RouterLink style="color: white;" :to="{ name: 'filters' }">Фильтры </RouterLink>
-    </a>
+      <RouterLink style="color: white;" :to="{ name: 'home' }">Все автомобили &nbsp;</RouterLink>
 
-    <a style="width: auto; height: 30px;margin-left: 15px;">
-      <RouterLink style="color: white;" :to="{ name: '404' }">Услуги </RouterLink>
-    </a>
+      <RouterLink style="color: white;" :to="{ name: 'filters' }"> Фильтры &nbsp;</RouterLink>
 
-    <a v-bind="summInfo" style="width: auto; height: 30px; margin-left: 15px;">
-      <RouterLink style=" color: white;" :to="{ name: 'recycle' }">Корзина({{ recycleInfo.length }})</RouterLink>
-    </a>
+      <RouterLink style="color: white;" :to="{ name: '404' }"> Услуги &nbsp;</RouterLink>
+
+      <RouterLink style=" color: white;" :to="{ name: 'recycle' }"> Корзина({{ recycleInfo.length }})</RouterLink>
+
+    </div>
   </header>
 
-  <div style="max-width: 600px; margin-left: auto; margin-right: auto;">
+  <div style="max-width: 1330px; margin-left: auto; margin-right: auto;">
     <router-view>
     </router-view>
   </div>
