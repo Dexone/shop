@@ -1,5 +1,5 @@
-<template>
-  <header style="background-color: #db3727; max-width: 3000px; height: 40px; padding: 7px;">
+<template >
+  <header style="background-color: #db3727; max-width: 3000px; height: 40px; padding: 7px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
     <a style="width: auto;">
       <RouterLink style="color: white;" :to="{ name: 'home' }">Все авто </RouterLink>
     </a>
