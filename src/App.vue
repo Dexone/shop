@@ -1,9 +1,10 @@
 <template>
   <header>
     <div class="routerLinks">
-      <RouterLink style="color: white;" :to="{ name: 'home' }">Все автомобили &nbsp;</RouterLink>
-      <RouterLink style="color: white;" :to="{ name: 'filters' }"> Фильтры &nbsp;</RouterLink>
-      <RouterLink style=" color: white;" :to="{ name: 'recycle' }"> Корзина({{ recycleInfo.length }})</RouterLink>
+      <RouterLink :to="{ name: 'home' }">Все автомобили &nbsp;</RouterLink>
+      <RouterLink :to="{ name: 'filters' }"> Фильтры &nbsp;</RouterLink>
+      <RouterLink :to="{ name: 'recycle' }"> Корзина({{ recycleInfo.length }})</RouterLink>
+      <img src="./image/logo.png" align="right">
     </div>
   </header>
 
@@ -38,18 +39,21 @@ axios.get("http://localhost:3000/products").then((res) => {
   const mainData = res.data.map((item, index) => {
     return {
       id: res.data[index].id,
-      brand: res.data[index].brand,
       model: res.data[index].model,
-      owners: res.data[index].owners,
       year: res.data[index].year,
-      probeg: res.data[index].probeg,
       power: res.data[index].power,
       kuzov: res.data[index].kuzov,
       transmission: res.data[index].transmission,
       engine: res.data[index].engine,
       color: res.data[index].color,
       price: res.data[index].price,
-      image: res.data[index].image,
+      image: {
+        1: res.data[index].image1,
+        2: res.data[index].image2,
+        3: res.data[index].image3,
+        4: res.data[index].image4,
+        5: res.data[index].image5
+      }
     }
   })
   mainInfo.value = mainData

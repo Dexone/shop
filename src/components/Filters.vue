@@ -1,61 +1,65 @@
 <template>
-    <div
-        style="background-color: #efefef; border-radius: 10px; width: 880px; height: 170px; font-size: 17px; color: #6c6a6a; margin-top: 10px; margin-left: 10px; ">
+    <div class="filtersFilters">
 
         <div>
-            <div
-                style="width: 370px; background-color: white; border-radius: 10px; height:60px; float: left; padding: 7px; margin: 7px;">
+            <div class="filterColors">
                 <div v-for="brand, index in brands" style="display: inline-block;">
-                    <div @click="search.push('&brand=' + brand), window.push(brand)">&nbsp;{{ brand }}</div>
+                    <div @click="search.push('&color=' + brand), window.push(brand)">&nbsp;{{ brand }}</div>
                 </div>
             </div>
         </div>
 
-        <div
-            style="width: 270px; background-color: white; border-radius: 10px; height:60px; float: left; padding: 7px; margin: 7px;">
+        <div class="filterKuzov">
             <div v-for="kuzov in kuzovs" style="display: inline-block;">
                 <div @click="search.push('&kuzov=' + kuzov), window.push(kuzov)">&nbsp;{{ kuzov }}</div>
             </div>
         </div>
 
-        <div
-            style="width: 180px; background-color: white; border-radius: 10px; height:60px; padding: 7px; margin: 7px; float: left">
+        <div class="filterTransmission">
             <div v-for="transmission in transmissions" style="display: inline-block;">
                 <div @click="search.push('&transmission=' + transmission), window.push(transmission)">&nbsp;{{ transmission
                 }}</div>
             </div>
         </div>
-
-        <div style="width: 800px; background-color: gray; height: 2px; float: right; margin-right: 50px; margin-top: 10px;">
-        </div>
-
-        <div>
-            <div v-for="wind, index in window" style="display: inline-block;">
-                <button style=" background-color: white; border: 0;  margin: 7px; color: red; font-size: 17px;"
-                    @click="window.splice(index, 1), search.splice(index, 1)">{{ wind }} ✖</button>
+        <div class="filterButtonsBlock">Выбрано:
+            <div v-for="wind, index in window" style=" display: inline-block;">
+                <button class="filterButtons" @click="window.splice(index, 1), search.splice(index, 1)">{{ wind }}
+                    ✖</button>
             </div>
         </div>
 
     </div>
 
-    <div v-for="filter in filtersInfo"
-        style="width: 980px; height: 400px; display: inline-block; margin: 10px; border-radius: 1.5ch; border: 1px solid; border-color: #f8f8f8;">
-        <img style="width: 340px; height: 190px; float: left; margin-right: 20px; border-radius: 1.5ch" :src=filter.image>
-        <div style="margin: 20px; color: #a0a09f;">
-            <b style="font-size: 18px;">
-                <RouterLink style="color: black;" :to="{ name: 'product' }"
-                    @click="productInfo.length = 0, productInfo.push(filter)">{{
-                        filter.brand }} {{ filter.model }}</RouterLink><br>
-            </b>
-            {{ filter.model }}, {{ filter.year }}г.в., {{ filter.probeg }} км, {{ filter.transmission }}, {{ filter.engine
-            }},
-            {{
-                filter.power }}л/с<br>
-            <b style="font-size: 24px; color: black;"> {{ filter.price }} ₽</b><br>
-        </div>
-        <button
-            style="width: 230px; height: 40px; background-color: red; border: 0; color: white; border-radius: 10px; margin-left: 30px; font-size: 18px;"
-            @click="recycleInfo.push(filter), summInfo = +summInfo  + +filter.price">Купить</button>
+
+
+
+
+
+
+
+
+
+
+    <div v-for="filter, index in filtersInfo" class="filterMain">
+
+        <div class="filterNewCar">Новое авто</div>
+
+        <RouterLink class="name" :to="{ name: 'product' }" @click="productInfo.length = 0, productInfo.push(filter)">{{
+            filter.model }} {{ filter.year
+    }}</RouterLink>
+
+        <div class="filterInfo">
+            {{ filter.power }}л.с. / {{ filter.engine }} / {{ filter.transmission }} / {{ filter.kuzov }} / {{ filter.color
+            }}</div>
+
+        <img class="filterHomeImg" :src=filter.image[1]>
+
+        <div class="filterPrice"> {{ filter.price }} ₽</div>
+
+        <div class="filterKredit"> {{ Math.round(filter.price / 84) }} ₽/мес</div>
+
+        <button class="filterBuyButton"
+            @click="recycleInfo.push(filter), summInfo = +summInfo + +filter.price">Купить</button>
     </div>
 </template>
 
@@ -68,24 +72,14 @@ import { inject, ref, watch, onMounted } from "vue"
 
 const mainInfo = inject("mainInfo") //массив основного axios
 
-let brands = ref() // удаление дубликатов марок
-function pre() {
-    let BrandList = []
-    let i = 0
-    while (i < mainInfo.value.length) {
-        BrandList.push(mainInfo.value[i].brand)
-        i++
-    }
-    const uniqueArr = [...new Set(BrandList)];
-    brands.value = uniqueArr
-}
-setTimeout(pre, 100)
+let brands = ["Синий", "Черный", "Серебристый", "Красный"] // удаление дубликатов марок
 
-let kuzovs = ["Седан", "Хэтчбек", "Универсал", "Внедорожник"]
-let transmissions = ["АКПП", "МКПП", "Робот", "Вариатор"]
+
+let kuzovs = ["Седан", "Хэтчбек", "Универсал", "Кроссовер"]
+let transmissions = ["АКПП", "МКПП", "Вариатор"]
 
 const window = ref([]) //окно марок
-let search = [] //&brand=&transmissions=&kuzov=
+let search = [] //&color=&transmissions=&kuzov=
 const productInfo = inject("productInfo") //добавление в продукт
 const recycleInfo = inject("recycleInfo") //добавление в корзину
 const summInfo = inject("summInfo") //сумма
@@ -104,11 +98,13 @@ function axiosget() {
                 engine: res.data[index].engine,
                 color: res.data[index].color,
                 price: res.data[index].price,
-                image: res.data[index].image,
+                image:{
+                1: res.data[index].image1
             }
+        }
         })
-        filtersInfo.value = filtersData
-    })
+    filtersInfo.value = filtersData
+})
 }
 watch(window.value, () => {
     axiosget()

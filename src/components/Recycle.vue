@@ -1,17 +1,29 @@
 <template>
-    <div v-for="recycle in recycleInfo"
-        style="background-color: ghostwhite; width: 280px; height: 300px; display: inline-block; margin: 10px; border-radius: 1.5ch">
-        <img style="width: 340px; height: 180px; border-radius: 1.5ch 1.5ch 0ch 0ch;" :src=recycle.image>
-        {{ recycle.brand }}{{ recycle.model }}<br>
-        {{ recycle.model }}, {{ recycle.year }}г.в., {{ recycle.probeg }} км, {{ recycle.transmission }}, {{
-            recycle.engine }},
-        {{ recycle.power }}л/с<br>
-        {{ recycle.price }}₽<br>
-    </div>
+
+    <div v-for="recycle, index in recycleInfo" class="recycleMain">
+
+<div class="recycleNewCar">Новое авто</div>
+
+<RouterLink class="recycleName" :to="{ name: 'product' }"
+    @click="productInfo.length = 0, productInfo.push(main)">{{ recycle.model }} {{ recycle.year
+    }}</RouterLink>
+
+<div class="recycleInfo">
+    {{ recycle.power }}л.с. / {{ recycle.engine }} / {{ recycle.transmission }} / {{ recycle.kuzov }} / {{ recycle.color }}</div>
+
+<img class="recycleHomeImg" :src=recycle.image[1]>
+
+<div class="recyclePrice"> {{ recycle.price }} ₽</div>
+
+<div class="recycleKredit"> {{ Math.round(recycle.price / 84) }} ₽/мес</div>
+
+<button class="recycleBuyButton" @click="recycleInfo.splice(index, 1), summInfo = +summInfo + +main.price">Удалить</button>
+</div>
 </template>
 
 <script setup>
 import { inject } from "vue"
 
 const recycleInfo = inject("recycleInfo")
+
 </script>
